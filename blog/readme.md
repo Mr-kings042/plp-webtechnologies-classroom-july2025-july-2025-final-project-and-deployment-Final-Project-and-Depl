@@ -107,8 +107,8 @@ blog/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/personal-blog.git
-   cd personal-blog/blog
+   git clone https://github.com/Mr-kings042/plp-webtechnologies-classroom-july2025-july-2025-final-project-and-deployment-Final-Project-and-Depl.git
+   cd plp-webtechnologies-classroom-july2025-july-2025-final-project-and-deployment-Final-Project-and-Depl/blog
    ```
 
 2. **Open in your preferred editor**
