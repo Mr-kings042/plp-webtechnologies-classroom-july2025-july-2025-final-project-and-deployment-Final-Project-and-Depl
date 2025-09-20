@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Blog | Home</title>
+    <meta name="description" content="A personal blog sharing thoughts on technology, design, and life">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-800 theme-transition font-sans">
+    <!-- Header with Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 theme-transition">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-primary-600" onclick="navigateTo('home')">MyBlog</a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors" onclick="navigateTo('home')">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors" onclick="navigateTo('about')">About</a>
+                    <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors" onclick="navigateTo('blog')">Blog</a>
+                    <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors" onclick="navigateTo('contact')">Contact</a>
+                </nav>
+                
+                <!-- Theme Toggle -->
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                        <i class="fas fa-moon text-gray-600"></i>
+                    </button>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                        <i class="fas fa-bars text-gray-600"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed inset-y-0 left-0 w-64 bg-white shadow-lg z-50 theme-transition">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <a href="#" class="text-2xl font-bold text-primary-600" onclick="navigateTo('home')">MyBlog</a>
+                    <button id="close-menu" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                        <i class="fas fa-times text-gray-600"></i>
+                    </button>
+                </div>
+                <nav class="flex flex-col space-y-6">
+                    <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors text-lg" onclick="navigateTo('home')">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors text-lg" onclick="navigateTo('about')">About</a>
+                    <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors text-lg" onclick="navigateTo('blog')">Blog</a>
+                    <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors text-lg" onclick="navigateTo('contact')">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Home Page -->
+        <div id="home-page" class="page active animate-fade-in">
+            <section class="mb-16">
+                <div class="relative h-96 rounded-xl overflow-hidden mb-8">
+                    <div class="carousel-item active">
+                        <img src="https://picsum.photos/1200/600?random=1" alt="Blog hero image" class="w-full h-96 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <div class="text-center text-white px-4">
+                                <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome to My Personal Blog</h1>
+                                <p class="text-xl max-w-2xl mx-auto">Sharing thoughts on technology, design, and life experiences</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://picsum.photos/1200/600?random=2" alt="Technology blog image" class="w-full h-96 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <div class="text-center text-white px-4">
+                                <h2 class="text-4xl md:text-5xl font-bold mb-4">Tech Insights</h2>
+                                <p class="text-xl max-w-2xl mx-auto">Latest trends and deep dives into technology</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://picsum.photos/1200/600?random=3" alt="Design blog image" class="w-full h-96 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <div class="text-center text-white px-4">
+                                <h2 class="text-4xl md:text-5xl font-bold mb-4">Design Thinking</h2>
+                                <p class="text-xl max-w-2xl mx-auto">Exploring the intersection of design and functionality</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="carousel-prev" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 transition-all">
+                        <i class="fas fa-chevron-left text-gray-800"></i>
+                    </button>
+                    <button id="carousel-next" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 transition-all">
+                        <i class="fas fa-chevron-right text-gray-800"></i>
+                    </button>
+                    <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                        <button class="carousel-indicator w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all active"></button>
+                        <button class="carousel-indicator w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all"></button>
+                        <button class="carousel-indicator w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all"></button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 text-center">Featured Posts</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <article class="blog-card bg-white rounded-xl overflow-hidden shadow-md">
+                        <img src="https://picsum.photos/400/250?random=4" alt="Web development trends" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-primary-600 text-sm font-medium">Technology</span>
+                            <h3 class="text-xl font-bold my-2">The Future of Web Development in 2023</h3>
+                            <p class="text-gray-600 mb-4">Exploring the latest frameworks, tools and methodologies shaping the future of web development.</p>
+                            <a href="#" class="text-primary-600 font-medium hover:underline" onclick="navigateTo('post', 1)">Read More</a>
+                        </div>
+                    </article>
+                    
+                    <article class="blog-card bg-white rounded-xl overflow-hidden shadow-md">
+                        <img src="https://picsum.photos/400/250?random=5" alt="UI/UX design principles" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-primary-600 text-sm font-medium">Design</span>
+                            <h3 class="text-xl font-bold my-2">Essential UI/UX Principles for Developers</h3>
+                            <p class="text-gray-600 mb-4">Key design principles that every developer should know to create better user experiences.</p>
+                            <a href="#" class="text-primary-600 font-medium hover:underline" onclick="navigateTo('post', 2)">Read More</a>
+                        </div>
+                    </article>
+                    
+                    <article class="blog-card bg-white rounded-xl overflow-hidden shadow-md">
+                        <img src="https://picsum.photos/400/250?random=6" alt="Productivity tips" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-primary-600 text-sm font-medium">Productivity</span>
+                            <h3 class="text-xl font-bold my-2">10 Productivity Hacks for Remote Workers</h3>
+                            <p class="text-gray-600 mb-4">Practical tips to stay focused and productive while working from home or remotely.</p>
+                            <a href="#" class="text-primary-600 font-medium hover:underline" onclick="navigateTo('post', 3)">Read More</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="bg-primary-50 rounded-xl p-8 mb-16">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-4">Subscribe to My Newsletter</h2>
+                    <p class="text-gray-700 mb-6">Get the latest articles, tips, and resources delivered straight to your inbox.</p>
+                    <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                        <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-500 form-input" required>
+                        <button type="submit" class="bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors font-medium">Subscribe</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page hidden animate-fade-in">
+            <section class="mb-16">
+                <h1 class="text-4xl font-bold mb-8 text-center">About Me</h1>
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="w-full lg:w-1/3">
+                        <img src="https://picsum.photos/400/500?random=7" alt="Profile photo" class="w-full rounded-xl shadow-lg">
+                    </div>
+                    <div class="w-full lg:w-2/3">
+                        <h2 class="text-2xl font-bold mb-4">Hello, I'm Alex Johnson</h2>
+                        <p class="text-gray-700 mb-6">I'm a front-end developer and UI/UX designer with over 8 years of experience creating digital products that users love. My passion lies in building interfaces that are not only visually appealing but also intuitive and accessible.</p>
+                        <p class="text-gray-700 mb-6">I started my career as a graphic designer but quickly transitioned to web development when I discovered the power of combining design thinking with technical implementation. This blog is my space to share what I've learned along the way.</p>
+                        
+                        <h3 class="text-xl font-bold mb-4 mt-8">My Skills</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                                <i class="fab fa-html5 text-orange-500 text-3xl mb-2"></i>
+                                <p class="font-medium">HTML/CSS</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                                <i class="fab fa-js-square text-yellow-500 text-3xl mb-2"></i>
+                                <p class="font-medium">JavaScript</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                                <i class="fab fa-react text-blue-500 text-3xl mb-2"></i>
+                                <p class="font-medium">React</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                                <i class="fab fa-figma text-purple-500 text-3xl mb-2"></i>
+                                <p class="font-medium">UI/UX Design</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                                <i class="fas fa-mobile-alt text-gray-600 text-3xl mb-2"></i>
+                                <p class="font-medium">Responsive Design</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                                <i class="fas fa-code-branch text-green-500 text-3xl mb-2"></i>
+                                <p class="font-medium">Git & GitHub</p>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors font-medium" onclick="navigateTo('contact')">Get In Touch</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-gray-100 rounded-xl p-8 mb-16">
+                <h2 class="text-3xl font-bold mb-8 text-center">My Journey</h2>
+                <div class="relative">
+                    <!-- Timeline -->
+                    <div class="border-l-2 border-primary-500 ml-4 pl-8 space-y-12">
+                        <div class="relative">
+                            <div class="absolute -left-12 top-0 w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-graduation-cap text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Computer Science Degree</h3>
+                            <p class="text-gray-600 mb-2">University of Technology, 2012-2016</p>
+                            <p class="text-gray-700">Earned my Bachelor's degree with a focus on human-computer interaction and web technologies.</p>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="absolute -left-12 top-0 w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-briefcase text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Junior Frontend Developer</h3>
+                            <p class="text-gray-600 mb-2">TechSolutions Inc., 2016-2018</p>
+                            <p class="text-gray-700">Started my career building responsive websites and learning industry best practices.</p>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="absolute -left-12 top-0 w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-rocket text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Senior UI Developer</h3>
+                            <p class="text-gray-600 mb-2">CreativeMinds Agency, 2018-2021</p>
+                            <p class="text-gray-700">Led frontend projects and mentored junior developers while specializing in React applications.</p>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="absolute -left-12 top-0 w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-pen-fancy text-white"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Freelance Developer & Blogger</h3>
+                            <p class="text-gray-600 mb-2">2021-Present</p>
+                            <p class="text-gray-700">Working with clients worldwide and sharing my knowledge through this blog and other platforms.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Blog Page -->
+        <div id="blog-page" class="page hidden animate-fade-in">
+            <h1 class="text-4xl font-bold mb-8 text-center">Blog Posts</h1>
+            
+            <div class="flex flex-col md:flex-row gap-8 mb-12">
+                <div class="w-full md:w-1/4">
+                    <div class="bg-white p-6 rounded-xl shadow-sm sticky top-24">
+                        <h3 class="text-xl font-bold mb-4">Categories</h3>
+                        <ul class="space-y-2">
+                            <li><button class="category-filter text-gray-700 hover:text-primary-600 transition-colors w-full text-left py-2 px-4 rounded-lg bg-gray-100 hover:bg-gray-200 active" data-category="all">All Topics</button></li>
+                            <li><button class="category-filter text-gray-700 hover:text-primary-600 transition-colors w-full text-left py-2 px-4 rounded-lg hover:bg-gray-100" data-category="technology">Technology</button></li>
+                            <li><button class="category-filter text-gray-700 hover:text-primary-600 transition-colors w-full text-left py-2 px-4 rounded-lg hover:bg-gray-100" data-category="design">Design</button></li>
+                            <li><button class="category-filter text-gray-700 hover:text-primary-600 transition-colors w-full text-left py-2 px-4 rounded-lg hover:bg-gray-100" data-category="productivity">Productivity</button></li>
+                            <li><button class="category-filter text-gray-700 hover:text-primary-600 transition-colors w-full text-left py-2 px-4 rounded-lg hover:bg-gray-100" data-category="career">Career</button></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-3/4">
+                    <div class="grid grid-cols-1 gap-8" id="blog-posts-container">
+                        <!-- Blog posts will be dynamically inserted here -->
+                    </div>
+                    
+                    <div class="flex justify-center mt-12">
+                        <button id="load-more" class="bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors font-medium">Load More Posts</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Post Page -->
+        <div id="single-post-page" class="page hidden animate-fade-in">
+            <article class="max-w-3xl mx-auto">
+                <div id="post-content">
+                    <!-- Post content will be dynamically inserted here -->
+                </div>
+                
+                <div class="mt-12 pt-8 border-t border-gray-200">
+                    <h3 class="text-2xl font-bold mb-6">Related Posts</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <span class="text-primary-600 text-sm font-medium">Design</span>
+                            <h4 class="text-lg font-bold my-2">Color Theory for Web Designers</h4>
+                            <p class="text-gray-600 mb-4">Learn how to choose color palettes that enhance user experience and convey the right message.</p>
+                            <a href="#" class="text-primary-600 font-medium hover:underline" onclick="navigateTo('post', 4)">Read More</a>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <span class="text-primary-600 text-sm font-medium">Technology</span>
+                            <h4 class="text-lg font-bold my-2">Introduction to Web Accessibility</h4>
+                            <p class="text-gray-600 mb-4">Making your websites accessible to everyone is not just ethical—it's essential.</p>
+                            <a href="#" class="text-primary-600 font-medium hover:underline" onclick="navigateTo('post', 5)">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 pt-8 border-t border-gray-200">
+                    <h3 class="text-2xl font-bold mb-6">Leave a Comment</h3>
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-2">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-primary-500 form-input" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-primary-500 form-input" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="comment" class="block text-gray-700 mb-2">Comment</label>
+                            <textarea id="comment" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-primary-500 form-input" required></textarea>
+                        </div>
+                        <button type="submit" class="bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors font-medium">Post Comment</button>
+                    </form>
+                </div>
+            </article>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact-page" class="page hidden animate-fade-in">
+            <h1 class="text-4xl font-bold mb-8 text-center">Get In Touch</h1>
+            
+            <div class="flex flex-col lg:flex-row gap-12 mb-16">
+                <div class="w-full lg:w-1/2">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="contact-name" class="block text-gray-700 mb-2">Full Name</label>
+                            <input type="text" id="contact-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary-500 form-input" required>
+                            <p class="text-red-500 text-sm mt-1 hidden" id="name-error">Please enter your name</p>
+                        </div>
+                        
+                        <div>
+                            <label for="contact-email" class="block text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="contact-email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary-500 form-input" required>
+                            <p class="text-red-500 text-sm mt-1 hidden" id="email-error">Please enter a valid email address</p>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary-500 form-input" required>
+                            <p class="text-red-500 text-sm mt-1 hidden" id="subject-error">Please enter a subject</p>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary-500 form-input" required></textarea>
+                            <p class="text-red-500 text-sm mt-1 hidden" id="message-error">Please enter your message</p>
+                        </div>
+                        
+                        <button type="submit" class="bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors font-medium w-full flex items-center justify-center">
+                            <span id="submit-text">Send Message</span>
+                            <span id="submit-loading" class="loading hidden ml-2"></span>
+                        </button>
+                        
+                        <div id="form-success" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded hidden mt-4">
+                            Your message has been sent successfully!
+                        </div>
+                        
+                        <div id="form-error" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded hidden mt-4">
+                            There was an error sending your message. Please try again.
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="w-full lg:w-1/2">
+                    <div class="bg-gray-100 rounded-xl p-8 h-full">
+                        <h2 class="text-2xl font-bold mb-6">Contact Information</h2>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-primary-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-primary-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold mb-1">Location</h3>
+                                    <p class="text-gray-700">Lagos, Nigeria</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-primary-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold mb-1">Email</h3>
+                                    <p class="text-gray-700">okohkings042@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone text-primary-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold mb-1">Phone</h3>
+                                    <p class="text-gray-700">+234 803 123 4567</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-primary-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold mb-1">Response Time</h3>
+                                    <p class="text-gray-700">Typically within 24 hours</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="font-bold mb-4">Follow Me</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-gray-200 p-3 rounded-full hover:bg-primary-600 hover:text-white transition-colors">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="bg-gray-200 p-3 rounded-full hover:bg-primary-600 hover:text-white transition-colors">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="bg-gray-200 p-3 rounded-full hover:bg-primary-600 hover:text-white transition-colors">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="bg-gray-200 p-3 rounded-full hover:bg-primary-600 hover:text-white transition-colors">
+                                    <i class="fab fa-dribbble"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl p-8 shadow-sm">
+                <h2 class="text-2xl font-bold mb-6 text-center">Frequently Asked Questions</h2>
+                
+                <div class="space-y-4">
+                    <div class="faq-item border-b border-gray-200 pb-4">
+                        <button class="faq-question w-full text-left flex justify-between items-center py-2 font-medium">
+                            <span>How often do you publish new blog posts?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer mt-2 text-gray-700 hidden">
+                            I typically publish new content every 1-2 weeks. To make sure you don't miss anything, you can subscribe to my newsletter for updates.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item border-b border-gray-200 pb-4">
+                        <button class="faq-question w-full text-left flex justify-between items-center py-2 font-medium">
+                            <span>Do you accept guest posts on your blog?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer mt-2 text-gray-700 hidden">
+                            Currently, I'm not accepting guest posts as I want to maintain a consistent voice and quality standard. However, this might change in the future.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item border-b border-gray-200 pb-4">
+                        <button class="faq-question w-full text-left flex justify-between items-center py-2 font-medium">
+                            <span>Can I use the code from your tutorials in my projects?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer mt-2 text-gray-700 hidden">
+                            Absolutely! All code snippets provided in my tutorials are free to use in your personal and commercial projects. Attribution is appreciated but not required.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item border-b border-gray-200 pb-4">
+                        <button class="faq-question w-full text-left flex justify-between items-center py-2 font-medium">
+                            <span>Do you offer consulting or freelance services?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer mt-2 text-gray-700 hidden">
+                            Yes, I'm available for select consulting projects and freelance work. Please use the contact form to describe your project, and I'll get back to you as soon as possible.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 theme-transition">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">MyBlog</h3>
+                    <p class="text-gray-400 mb-6">Sharing knowledge and experiences about web development, design, and technology.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://x.com/sirkngs" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/kingsley-okoh/" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/Mr-kings042" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://kings042.netlify.app/" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="navigateTo('home')">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="navigateTo('about')">About</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="navigateTo('blog')">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="navigateTo('contact')">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="navigateTo('blog', 'technology')">Technology</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="navigateTo('blog', 'design')">Design</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="navigateTo('blog', 'productivity')">Productivity</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors" onclick="navigateTo('blog', 'career')">Career</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to get notified about new articles and resources.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full">
+                        <button type="submit" class="bg-primary-600 px-4 py-2 rounded-r-lg hover:bg-primary-700 transition-colors">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 MyBlog. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
